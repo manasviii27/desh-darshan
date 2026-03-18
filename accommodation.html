@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accommodation - DeshDarshan</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+</head>
+<body>
+    <nav class="navbar">
+        <a href="index.html" class="logo">Desh<span>Darshan</span></a>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="destinations.html">Destinations</a></li>
+            <li><a href="accommodation.html" class="active">Accommodation</a></li>
+            <li><a href="culture.html">Culture</a></li>
+            <li><a href="tripplanner.html">Trip Planner</a></li>
+        </ul>
+        <div class="mobile-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <h1>Find Your Stay</h1>
+        <p>Search hotels, resorts, and homestays across India with exact locations</p>
+    </section>
+
+    <section class="search-section">
+        <h2>Search Accommodations</h2>
+        <div class="search-box">
+            <input type="text" id="search-input" placeholder="Search for a city or destination...">
+            <button type="button"><i class="fas fa-search"></i> Search</button>
+        </div>
+        <div class="filter-pills">
+            <span class="filter-pill active" data-filter="all">All</span>
+            <span class="filter-pill" data-filter="budget">Budget</span>
+            <span class="filter-pill" data-filter="mid">Mid-range</span>
+            <span class="filter-pill" data-filter="luxury">Luxury</span>
+        </div>
+    </section>
+
+    <section class="map-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Hotel <span>Map</span></h2>
+                <p>View hotels on map and find your perfect stay</p>
+            </div>
+            <div id="hotel-map" style="height: 400px; border-radius: 16px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1);"></div>
+        </div>
+    </section>
+
+    <section class="results-section">
+        <div class="container">
+            <div id="accommodations-grid" class="accommodations-grid">
+            </div>
+        </div>
+    </section>
+
+    <section class="container" style="padding: 80px 5%;">
+        <div class="section-header">
+            <h2>Why Book With <span>Us</span></h2>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <h3>Secure Booking</h3>
+                <p>Your payments and personal information are always safe with us</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-tag"></i>
+                </div>
+                <h3>Best Price Guarantee</h3>
+                <p>We will match any lower price and give you an additional discount</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-headset"></i>
+                </div>
+                <h3>24/7 Support</h3>
+                <p>Our travel experts are available round the clock to help you</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>About DeshDarshan</h3>
+                    <p>Your trusted companion for exploring the incredible diversity of India.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="destinations.html">Destinations</a></li>
+                        <li><a href="accommodation.html">Accommodation</a></li>
+                        <li><a href="culture.html">Culture</a></li>
+                        <li><a href="tripplanner.html">Trip Planner</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li><i class="fas fa-envelope"></i> info@deshdarshan.in</li>
+                        <li><i class="fas fa-phone"></i> +91 98765 43210</li>
+                        <li><i class="fas fa-map-marker-alt"></i> New Delhi, India</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 DeshDarshan. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/accommodation.js"></script>
+</body>
+</html>

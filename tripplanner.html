@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trip Planner - DeshDarshan</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <a href="index.html" class="logo">Desh<span>Darshan</span></a>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="destinations.html">Destinations</a></li>
+            <li><a href="accommodation.html">Accommodation</a></li>
+            <li><a href="culture.html">Culture</a></li>
+            <li><a href="tripplanner.html" class="active">Trip Planner</a></li>
+        </ul>
+        <div class="mobile-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <section class="planner-hero">
+        <div class="planner-hero-bg">
+            <img src="https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=1920&q=80" alt="India Travel">
+        </div>
+        <div class="planner-hero-overlay"></div>
+        <h1>Plan Your Budget</h1>
+        <p>Calculate your estimated trip cost and travel smart across India</p>
+    </section>
+
+    <section class="calculator-section">
+        <div class="calculator-container">
+            <h2><i class="fas fa-calculator"></i> Trip Cost Calculator</h2>
+            <form id="trip-form">
+                <div class="form-group">
+                    <label for="days">Number of Days</label>
+                    <input type="number" id="days" min="1" placeholder="Enter number of days" required>
+                </div>
+                <div class="form-group">
+                    <label for="hotel-cost">Hotel Cost per Day</label>
+                    <div class="input-prefix">
+                        <span><i class="fas fa-rupee-sign"></i></span>
+                        <input type="number" id="hotel-cost" min="0" placeholder="e.g., 3000">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="food-cost">Food Cost per Day</label>
+                    <div class="input-prefix">
+                        <span><i class="fas fa-rupee-sign"></i></span>
+                        <input type="number" id="food-cost" min="0" placeholder="e.g., 500">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="travel-cost">Travel/Transport Cost</label>
+                    <div class="input-prefix">
+                        <span><i class="fas fa-rupee-sign"></i></span>
+                        <input type="number" id="travel-cost" min="0" placeholder="e.g., 5000">
+                    </div>
+                </div>
+                <div class="button-group">
+                    <button type="button" id="calculate-btn" class="btn btn-primary">
+                        <i class="fas fa-calculator"></i> Calculate
+                    </button>
+                    <button type="button" id="reset-btn" class="btn btn-secondary">
+                        <i class="fas fa-redo"></i> Reset
+                    </button>
+                </div>
+            </form>
+            <div id="results-display" class="results-display">
+                <div class="result-row">
+                    <span>Accommodation Total</span>
+                    <span class="result-value" id="accommodation-total">Rs 0</span>
+                </div>
+                <div class="result-row">
+                    <span>Food Total</span>
+                    <span class="result-value" id="food-total">Rs 0</span>
+                </div>
+                <div class="result-row">
+                    <span>Travel/Transport</span>
+                    <span class="result-value" id="travel-total">Rs 0</span>
+                </div>
+                <div class="result-row total">
+                    <span>Total Estimated Budget</span>
+                    <span class="result-value" id="grand-total">Rs 0</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="tips-section">
+        <div class="container">
+            <h2>Budget Travel Tips for India</h2>
+            <div class="tips-grid">
+                <div class="tip-card">
+                    <h4><i class="fas fa-hotel"></i> Accommodation</h4>
+                    <p>Book in advance, especially during peak season. Look for budget hotels, guesthouses, and hostels. OYO and similar platforms offer great deals.</p>
+                </div>
+                <div class="tip-card">
+                    <h4><i class="fas fa-train"></i> Transportation</h4>
+                    <p>Use Indian Railways for long distances - book AC classes for comfort. For short trips, consider state transport buses or ride-sharing apps.</p>
+                </div>
+                <div class="tip-card">
+                    <h4><i class="fas fa-utensils"></i> Food</h4>
+                    <p>Eat at local dhabas and street food stalls for authentic and affordable meals. Thali meals at restaurants offer great value.</p>
+                </div>
+                <div class="tip-card">
+                    <h4><i class="fas fa-ticket-alt"></i> Attractions</h4>
+                    <p>Many monuments offer free entry on certain days. E-tickets often have discounts. Student and senior citizen concessions are available.</p>
+                </div>
+                <div class="tip-card">
+                    <h4><i class="fas fa-calendar-alt"></i> Timing</h4>
+                    <p>Travel during shoulder season (April-May, September-October) for better deals. Avoid peak festival times for lower costs.</p>
+                </div>
+                <div class="tip-card">
+                    <h4><i class="fas fa-money-bill-wave"></i> Money</h4>
+                    <p>Use ATMs from reputable banks. Keep some cash for smaller towns. UPI payments are widely accepted in cities.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="container" style="padding: 80px 5%; text-align: center;">
+        <div class="section-header">
+            <h2>Ready to <span>Explore</span>?</h2>
+            <p>Now that you have an estimate, start planning your dream trip to India</p>
+        </div>
+        <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+            <a href="destinations.html" class="btn btn-primary">
+                <i class="fas fa-map-marked-alt"></i> View Destinations
+            </a>
+            <a href="accommodation.html" class="btn btn-primary">
+                <i class="fas fa-hotel"></i> Find Hotels
+            </a>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>About DeshDarshan</h3>
+                    <p>Your trusted companion for exploring the incredible diversity of India.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="destinations.html">Destinations</a></li>
+                        <li><a href="accommodation.html">Accommodation</a></li>
+                        <li><a href="culture.html">Culture</a></li>
+                        <li><a href="tripplanner.html">Trip Planner</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li><i class="fas fa-envelope"></i> info@deshdarshan.in</li>
+                        <li><i class="fas fa-phone"></i> +91 98765 43210</li>
+                        <li><i class="fas fa-map-marker-alt"></i> New Delhi, India</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 DeshDarshan. All rights reserved. Celebrating the Spirit of Incredible India</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/tripplanner.js"></script>
+</body>
+</html>

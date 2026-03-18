@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Destinations - DeshDarshan</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+</head>
+<body>
+    <nav class="navbar">
+        <a href="index.html" class="logo">Desh<span>Darshan</span></a>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="destinations.html" class="active">Destinations</a></li>
+            <li><a href="accommodation.html">Accommodation</a></li>
+            <li><a href="culture.html">Culture</a></li>
+            <li><a href="tripplanner.html">Trip Planner</a></li>
+        </ul>
+        <div class="mobile-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <h1>Explore India's Treasures</h1>
+        <p>From the Himalayas to the backwaters - discover the diverse beauty of Incredible India</p>
+    </section>
+
+    <!-- Map Section -->
+    <section class="map-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Interactive <span>Map</span></h2>
+                <p>Explore destinations on map and calculate travel distances</p>
+            </div>
+            
+            <div class="map-container">
+                <div id="destination-map"></div>
+                <div class="map-sidebar">
+                    <h3><i class="fas fa-map-marker-alt"></i> Popular Routes</h3>
+                    <div id="route-list"></div>
+                </div>
+            </div>
+            
+            <div class="distance-calculator">
+                <h3><i class="fas fa-route"></i> Distance & Time Calculator</h3>
+                <div class="calc-form">
+                    <select id="from-destination">
+                        <option value="">From Destination</option>
+                    </select>
+                    <select id="to-destination">
+                        <option value="">To Destination</option>
+                    </select>
+                    <div class="calc-result" id="calc-result" style="display: none;">
+                        <div class="route-info">
+                            <div>
+                                <div class="value" id="calc-distance">0</div>
+                                <div class="label">Kilometers</div>
+                            </div>
+                            <div>
+                                <div class="value" id="calc-time">0</div>
+                                <div class="label">Hours</div>
+                            </div>
+                        </div>
+                        <div class="total-cost">
+                            Estimated Travel Cost: <span id="calc-cost">Rs 0</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Destinations Grid -->
+    <section class="container" style="padding: 80px 5%;">
+        <div class="destinations-grid" id="destinations-grid">
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section class="reviews-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Traveler <span>Reviews</span></h2>
+                <p>See what our travelers say about their experiences</p>
+            </div>
+            
+            <div class="reviews-grid" id="reviews-grid">
+            </div>
+            
+            <div class="review-form">
+                <h3><i class="fas fa-pen"></i> Write a Review</h3>
+                <form id="add-review-form">
+                    <div class="form-row">
+                        <input type="text" id="reviewer-name" placeholder="Your Name" required>
+                        <input type="text" id="reviewer-location" placeholder="Your City" required>
+                    </div>
+                    <div class="form-row">
+                        <select id="review-destination" required>
+                            <option value="">Select Destination</option>
+                        </select>
+                        <select id="review-rating" required>
+                            <option value="">Rating</option>
+                            <option value="5">5 Stars - Excellent</option>
+                            <option value="4">4 Stars - Very Good</option>
+                            <option value="3">3 Stars - Good</option>
+                            <option value="2">2 Stars - Fair</option>
+                            <option value="1">1 Star - Poor</option>
+                        </select>
+                    </div>
+                    <textarea id="review-text" placeholder="Share your travel experience..." required></textarea>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-paper-plane"></i> Submit Review
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>About DeshDarshan</h3>
+                    <p>Your trusted companion for exploring the incredible diversity of India.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="destinations.html">Destinations</a></li>
+                        <li><a href="accommodation.html">Accommodation</a></li>
+                        <li><a href="culture.html">Culture</a></li>
+                        <li><a href="tripplanner.html">Trip Planner</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li><i class="fas fa-envelope"></i> info@deshdarshan.in</li>
+                        <li><i class="fas fa-phone"></i> +91 98765 43210</li>
+                        <li><i class="fas fa-map-marker-alt"></i> New Delhi, India</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 DeshDarshan. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/destinations.js"></script>
+</body>
+</html>
