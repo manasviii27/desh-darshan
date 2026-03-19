@@ -4,6 +4,8 @@ const destinations = [
         id: 1,
         name: "Rajasthan",
         subtitle: "Land of Kings",
+        budget: "₹8,000-25,000",
+        season: "Oct-Mar",
         lat: 27.0238,
         lng: 74.2179,
         description: "Experience the royal grandeur of India's most majestic state. From golden deserts to stunning palaces, Rajasthan offers an unforgettable journey into history.",
@@ -53,6 +55,8 @@ const destinations = [
         id: 2,
         name: "Kerala",
         subtitle: "God's Own Country",
+        budget: "₹10,000-30,000",
+        season: "Sep-Mar",
         lat: 10.8505,
         lng: 76.2711,
         description: "Discover paradise on Earth with serene backwaters, lush green tea gardens, and pristine beaches. Kerala offers tranquility like nowhere else.",
@@ -100,6 +104,8 @@ const destinations = [
         id: 3,
         name: "Goa",
         subtitle: "Beach Paradise",
+        budget: "₹6,000-20,000",
+        season: "Sep-May",
         lat: 15.2993,
         lng: 74.1240,
         description: "India's party capital with pristine beaches, Portuguese heritage, and world-famous nightlife. Sun, sand, and endless fun await!",
@@ -147,6 +153,8 @@ const destinations = [
         id: 4,
         name: "Uttarakhand",
         subtitle: "Dev Bhoomi",
+        budget: "₹7,000-22,000",
+        season: "Mar-Jun, Sep-Nov",
         lat: 30.0668,
         lng: 79.0193,
         description: "The land of gods with snow-capped Himalayas, sacred rivers, and spiritual retreats. Experience divine peace in the mountains.",
@@ -184,6 +192,8 @@ const destinations = [
         id: 5,
         name: "Tamil Nadu",
         subtitle: "Temple Land",
+        budget: "₹8,000-20,000",
+        season: "Oct-Mar",
         lat: 11.1271,
         lng: 78.6569,
         description: "Home to ancient Dravidian temples, classical dance forms, and beautiful hill stations. Immerse in South Indian culture and heritage.",
@@ -221,6 +231,8 @@ const destinations = [
         id: 6,
         name: "Maharashtra",
         subtitle: "Financial Capital",
+        budget: "₹7,000-25,000",
+        season: "Oct-Mar",
         lat: 19.7515,
         lng: 75.7139,
         description: "From Bollywood glitz to ancient caves, Maharashtra has it all. Explore the maximum city's energy and Maharashtra's rich heritage.",
@@ -258,6 +270,8 @@ const destinations = [
         id: 7,
         name: "Gujarat",
         subtitle: "Vibrant Heritage",
+        budget: "₹6,000-18,000",
+        season: "Oct-Mar",
         lat: 22.2587,
         lng: 71.1924,
         description: "Land of legends, lions, and lip-smacking food. From the world's tallest statue to the white salt desert, Gujarat amazes all.",
@@ -839,16 +853,21 @@ function renderDestinations() {
         <div class="destination-card" data-id="${dest.id}" onclick="showDestinationDetails(${dest.id})">
             <div class="destination-image">
                 <img src="${dest.images[0]}" alt="${dest.name}">
+                <div class="destination-tags">
+                    <span class="budget-tag">${dest.budget || 'Budget Friendly'}</span>
+                    <span class="season-tag">${dest.season || 'Oct-Mar'}</span>
+                </div>
             </div>
             <div class="destination-content">
                 <h3>${dest.name}</h3>
                 <p class="destination-subtitle">${dest.subtitle}</p>
-                <p class="destination-desc">${dest.description.substring(0, 100)}...</p>
+                <p class="destination-desc">${dest.description.substring(0, 80)}...</p>
                 <div class="place-counts">
-                    <span><i class="fas fa-star"></i> ${dest.famous.length} Famous</span>
+                    <span><i class="fas fa-star"></i> ${dest.famous.length} Places</span>
                     <span><i class="fas fa-gem"></i> ${dest.hidden.length} Hidden</span>
                     <span><i class="fas fa-utensils"></i> ${dest.food.length} Foods</span>
                 </div>
+                <button class="btn-explore">Explore <i class="fas fa-arrow-right"></i></button>
             </div>
         </div>
     `).join('');
@@ -917,24 +936,10 @@ function calculateRoute() {
 }
 
 const reviews = [
-    { id: 1, name: "Rahul Sharma", location: "Mumbai", destination: "Rajasthan", rating: 5, text: "Absolutely magical! The palaces took my breath away.", date: "2024-01-15" },
-    { id: 2, name: "Priya Patel", location: "Bangalore", destination: "Kerala", rating: 5, text: "Houseboat experience was once in a lifetime!", date: "2024-01-10" },
-    { id: 3, name: "Amit Kumar", location: "Delhi", destination: "Goa", rating: 5, text: "Best beach vacation ever!", date: "2024-01-08" },
-    { id: 4, name: "Sneha Gupta", location: "Chennai", destination: "Uttarakhand", rating: 5, text: "Valley of Flowers was dreamlike!", date: "2024-01-05" },
-    { id: 5, name: "Vikram Singh", location: "Kolkata", destination: "Tamil Nadu", rating: 5, text: "Meenakshi Temple is incredible!", date: "2024-01-03" },
-    { id: 6, name: "Anjali Reddy", location: "Hyderabad", destination: "Maharashtra", rating: 5, text: "Ajanta caves are mind-blowing!", date: "2023-12-28" },
-    { id: 7, name: "Deepak Joshi", location: "Pune", destination: "Gujarat", rating: 5, text: "Statue of Unity is majestic!", date: "2023-12-25" },
-    { id: 8, name: "Meera Shah", location: "Ahmedabad", destination: "Karnataka", rating: 5, text: "Coorg is Scotland of India!", date: "2023-12-20" },
-    { id: 9, name: "Rajesh Nair", location: "Kochi", destination: "Madhya Pradesh", rating: 5, text: "Khajuraho is a wonder!", date: "2023-12-18" },
-    { id: 10, name: "Kavita Das", location: "Guwahati", destination: "Assam", rating: 5, text: "Tea gardens are so peaceful!", date: "2023-12-15" },
-    { id: 11, name: "Arun Mishra", location: "Lucknow", destination: "Odisha", rating: 5, text: "Konark Sun Temple is amazing!", date: "2023-12-10" },
-    { id: 12, name: "Fatima Khan", location: "Jaipur", destination: "Jammu Kashmir", rating: 5, text: "Pangong Lake is heaven!", date: "2023-12-05" },
-    { id: 13, name: "Sanjay Verma", location: "Patna", destination: "Bihar", rating: 4, text: "Nalanda is very educational!", date: "2023-12-01" },
-    { id: 14, name: "Lakshmi Iyer", location: "Trivandrum", destination: "Sikkim", rating: 5, text: "Tsong Lake is divine!", date: "2023-11-28" },
-    { id: 15, name: "Harpreet Singh", location: "Chandigarh", destination: "Himachal Pradesh", rating: 5, text: "Spiti Valley is breathtaking!", date: "2023-11-25" },
-    { id: 16, name: "Nisha Reddy", location: "Hyderabad", destination: "Uttar Pradesh", rating: 5, text: "Taj Mahal is magical!", date: "2023-11-20" },
-    { id: 17, name: "Raj Malhotra", location: "Chennai", destination: "Andhra Pradesh", rating: 5, text: "Tirumala darshan was divine!", date: "2023-11-15" },
-    { id: 18, name: "Ankit Sharma", location: "Raipur", destination: "Chhattisgarh", rating: 5, text: "Chitrakoot Falls is spectacular!", date: "2023-11-10" }
+    { id: 1, name: "Rahul Sharma", location: "Mumbai", destination: "Rajasthan", rating: 5, text: "Absolutely magical! The palaces took my breath away. The royal heritage is incredible!", date: "2026-01-15" },
+    { id: 2, name: "Priya Patel", location: "Bangalore", destination: "Kerala", rating: 5, text: "Houseboat experience was once in a lifetime! Peaceful backwaters are amazing.", date: "2026-02-10" },
+    { id: 3, name: "Amit Kumar", location: "Delhi", destination: "Goa", rating: 5, text: "Best beach vacation ever! Clean beaches and vibrant nightlife.", date: "2026-01-08" },
+    { id: 4, name: "Sneha Gupta", location: "Chennai", destination: "Uttarakhand", rating: 5, text: "Valley of Flowers was dreamlike! Nature at its best.", date: "2026-03-05" }
 ];
 
 function renderReviews() {

@@ -729,22 +729,23 @@ section {
 }
 
 .destination-card {
-    background: rgba(18, 18, 26, 0.8);
-    backdrop-filter: blur(10px);
-    border-radius: var(--radius-md);
+    background: rgba(18, 18, 26, 0.85);
+    backdrop-filter: blur(15px);
+    border-radius: var(--radius-lg);
     overflow: hidden;
-    border: 1px solid rgba(201, 162, 39, 0.1);
-    transition: var(--transition);
+    border: 1px solid rgba(201, 162, 39, 0.15);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
 }
 
 .destination-card:hover {
-    transform: translateY(-10px) rotateX(2deg);
-    box-shadow: var(--shadow-lg);
-    border-color: rgba(201, 162, 39, 0.4);
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 25px 60px rgba(201, 162, 39, 0.25);
+    border-color: rgba(201, 162, 39, 0.5);
 }
 
 .destination-image {
-    height: 200px;
+    height: 220px;
     position: relative;
     overflow: hidden;
 }
@@ -753,21 +754,41 @@ section {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: var(--transition);
+    transition: transform 0.5s ease;
 }
 
 .destination-card:hover .destination-image img {
     transform: scale(1.15);
 }
 
-.destination-image::after {
-    content: '';
+.destination-tags {
     position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 80px;
-    background: linear-gradient(transparent, var(--bg-card));
+    top: 15px;
+    left: 15px;
+    right: 15px;
+    display: flex;
+    justify-content: space-between;
+    z-index: 2;
+}
+
+.budget-tag, .season-tag {
+    background: rgba(10, 10, 15, 0.8);
+    backdrop-filter: blur(10px);
+    padding: 0.4rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+}
+
+.budget-tag {
+    color: var(--accent);
+    border: 1px solid rgba(201, 162, 39, 0.3);
+}
+
+.season-tag {
+    color: var(--text-primary);
+    border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .destination-content {
@@ -2209,6 +2230,37 @@ section {
 
 .place-counts i {
     color: var(--accent);
+}
+
+.btn-explore {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: transparent;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    padding: 0.6rem 1.2rem;
+    border-radius: 25px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 0.85rem;
+    margin-top: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-explore:hover {
+    background: var(--accent);
+    color: var(--bg-dark);
+    transform: translateX(5px);
+}
+
+.btn-explore i {
+    transition: transform 0.3s ease;
+}
+
+.btn-explore:hover i {
+    transform: translateX(5px);
 }
 
 .lat-lng {
