@@ -7,8 +7,22 @@
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 <body>
+    <!-- Page Loader -->
+    <div class="page-loader">
+        <div class="loader-content">
+            <div class="loader-icon">
+                <i class="fas fa-compass"></i>
+            </div>
+            <h2>DeshDarshan</h2>
+            <div class="loader-bar">
+                <div class="loader-progress"></div>
+            </div>
+        </div>
+    </div>
+    
     <nav class="navbar">
         <a href="index.html" class="logo">Desh<span>Darshan</span></a>
         <ul class="nav-links">
@@ -55,6 +69,17 @@
 
     <!-- Destinations Grid -->
     <section class="container" style="padding: 80px 5%;">
+        <!-- Filter Buttons -->
+        <div class="filter-buttons">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="north">North India</button>
+            <button class="filter-btn" data-filter="south">South India</button>
+            <button class="filter-btn" data-filter="east">East India</button>
+            <button class="filter-btn" data-filter="west">West India</button>
+            <button class="filter-btn" data-filter="heritage">Heritage</button>
+            <button class="filter-btn" data-filter="beach">Beach</button>
+            <button class="filter-btn" data-filter="mountain">Mountain</button>
+        </div>
         <div class="destinations-grid" id="destinations-grid">
         </div>
     </section>

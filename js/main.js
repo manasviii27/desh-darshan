@@ -3,9 +3,20 @@ document.addEventListener('DOMContentLoaded', function() {
     highlightActivePage();
     initScrollAnimations();
     initCounterAnimation();
+    initPageLoader();
 });
 
-// Scroll Animations
+// Page Loader
+function initPageLoader() {
+    const loader = document.querySelector('.page-loader');
+    if (loader) {
+        setTimeout(() => {
+            loader.classList.add('hidden');
+        }, 1500);
+    }
+}
+
+// Scroll Animations with AOS-like effect
 function initScrollAnimations() {
     const animateElements = document.querySelectorAll('.feature-card, .destination-card, .culture-card, .place-card, .show-card, .section-header, .hero-stats');
     

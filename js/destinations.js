@@ -6,6 +6,8 @@ const destinations = [
         subtitle: "Land of Kings",
         budget: "₹8,000-25,000",
         season: "Oct-Mar",
+        region: "west",
+        type: ["heritage", "desert"],
         lat: 27.0238,
         lng: 74.2179,
         description: "Experience the royal grandeur of India's most majestic state. From golden deserts to stunning palaces, Rajasthan offers an unforgettable journey into history.",
@@ -57,6 +59,8 @@ const destinations = [
         subtitle: "God's Own Country",
         budget: "₹10,000-30,000",
         season: "Sep-Mar",
+        region: "south",
+        type: ["beach", "backwaters", "hillstation"],
         lat: 10.8505,
         lng: 76.2711,
         description: "Discover paradise on Earth with serene backwaters, lush green tea gardens, and pristine beaches. Kerala offers tranquility like nowhere else.",
@@ -106,6 +110,8 @@ const destinations = [
         subtitle: "Beach Paradise",
         budget: "₹6,000-20,000",
         season: "Sep-May",
+        region: "west",
+        type: ["beach", "heritage"],
         lat: 15.2993,
         lng: 74.1240,
         description: "India's party capital with pristine beaches, Portuguese heritage, and world-famous nightlife. Sun, sand, and endless fun await!",
@@ -155,6 +161,8 @@ const destinations = [
         subtitle: "Dev Bhoomi",
         budget: "₹7,000-22,000",
         season: "Mar-Jun, Sep-Nov",
+        region: "north",
+        type: ["mountain", "heritage", "spiritual"],
         lat: 30.0668,
         lng: 79.0193,
         description: "The land of gods with snow-capped Himalayas, sacred rivers, and spiritual retreats. Experience divine peace in the mountains.",
@@ -194,6 +202,8 @@ const destinations = [
         subtitle: "Temple Land",
         budget: "₹8,000-20,000",
         season: "Oct-Mar",
+        region: "south",
+        type: ["heritage", "temple", "hillstation"],
         lat: 11.1271,
         lng: 78.6569,
         description: "Home to ancient Dravidian temples, classical dance forms, and beautiful hill stations. Immerse in South Indian culture and heritage.",
@@ -233,6 +243,8 @@ const destinations = [
         subtitle: "Financial Capital",
         budget: "₹7,000-25,000",
         season: "Oct-Mar",
+        region: "west",
+        type: ["heritage", "beach", "hillstation"],
         lat: 19.7515,
         lng: 75.7139,
         description: "From Bollywood glitz to ancient caves, Maharashtra has it all. Explore the maximum city's energy and Maharashtra's rich heritage.",
@@ -272,6 +284,8 @@ const destinations = [
         subtitle: "Vibrant Heritage",
         budget: "₹6,000-18,000",
         season: "Oct-Mar",
+        region: "west",
+        type: ["heritage", "wildlife", "beach"],
         lat: 22.2587,
         lng: 71.1924,
         description: "Land of legends, lions, and lip-smacking food. From the world's tallest statue to the white salt desert, Gujarat amazes all.",
@@ -846,10 +860,22 @@ function showPlaceMap(lat, lng, name) {
     marker.bindPopup(`<div class="popup-content"><h4>${name}</h4><p>Lat: ${lat.toFixed(4)}, Lng: ${lng.toFixed(4)}</p></div>`).openPopup();
 }
 
-function renderDestinations() {
+function renderDestinations(filter = 'all') {
     const grid = document.getElementById('destinations-grid');
     if (!grid) return;
-    grid.innerHTML = destinations.map(dest => `
+    
+    let filteredDestinations = destinations;
+    
+    if (filter !== 'all') {
+        filteredDestinations = destinations.filter(dest => {
+            if (filter === 'north' || filter === 'south' || filter === 'east' || filter === 'west') {
+                return dest.region === filter;
+            }
+            return dest.type && dest.type.includes(filter);
+        });
+    }
+    
+    grid.innerHTML = filteredDestinations.map(dest => `
         <div class="destination-card" data-id="${dest.id}" onclick="showDestinationDetails(${dest.id})">
             <div class="destination-image">
                 <img src="${dest.images[0]}" alt="${dest.name}">
@@ -871,6 +897,22 @@ function renderDestinations() {
             </div>
         </div>
     `).join('');
+    
+    if (filteredDestinations.length === 0) {
+        grid.innerHTML = '<p class="no-results">No destinations found for this filter.</p>';
+    }
+}
+
+function initFilterButtons() {
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            filterBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            const filter = btn.dataset.filter;
+            renderDestinations(filter);
+        });
+    });
 }
 
 function renderRoutes() {
@@ -935,18 +977,27 @@ function calculateRoute() {
     resultDiv.style.display = 'block';
 }
 
-const reviews = [
+const defaultReviews = [
     { id: 1, name: "Rahul Sharma", location: "Mumbai", destination: "Rajasthan", rating: 5, text: "Absolutely magical! The palaces took my breath away. The royal heritage is incredible!", date: "2026-01-15" },
     { id: 2, name: "Priya Patel", location: "Bangalore", destination: "Kerala", rating: 5, text: "Houseboat experience was once in a lifetime! Peaceful backwaters are amazing.", date: "2026-02-10" },
     { id: 3, name: "Amit Kumar", location: "Delhi", destination: "Goa", rating: 5, text: "Best beach vacation ever! Clean beaches and vibrant nightlife.", date: "2026-01-08" },
     { id: 4, name: "Sneha Gupta", location: "Chennai", destination: "Uttarakhand", rating: 5, text: "Valley of Flowers was dreamlike! Nature at its best.", date: "2026-03-05" }
 ];
 
+// Load reviews from localStorage or use default reviews
+let reviews = JSON.parse(localStorage.getItem('deshDarshanReviews')) || [...defaultReviews];
+
+// Save reviews to localStorage
+function saveReviews() {
+    localStorage.setItem('deshDarshanReviews', JSON.stringify(reviews));
+}
+
 function renderReviews() {
     const grid = document.getElementById('reviews-grid');
     if (!grid) return;
+    
     grid.innerHTML = reviews.map(review => `
-        <div class="review-card">
+        <div class="review-card" data-aos="fade-up">
             <div class="review-header">
                 <div class="reviewer-avatar">${review.name.charAt(0)}</div>
                 <div class="reviewer-info">
@@ -964,7 +1015,7 @@ function renderReviews() {
 function handleReviewSubmit(e) {
     e.preventDefault();
     const newReview = {
-        id: reviews.length + 1,
+        id: Date.now(),
         name: document.getElementById('reviewer-name').value,
         location: document.getElementById('reviewer-location').value,
         destination: document.getElementById('review-destination').value,
@@ -972,7 +1023,9 @@ function handleReviewSubmit(e) {
         text: document.getElementById('review-text').value,
         date: new Date().toISOString().split('T')[0]
     };
+    
     reviews.unshift(newReview);
+    saveReviews();
     renderReviews();
     document.getElementById('add-review-form').reset();
     alert('Thank you for your review!');
@@ -981,6 +1034,7 @@ function handleReviewSubmit(e) {
 document.addEventListener('DOMContentLoaded', function() {
     initMap();
     renderDestinations();
+    initFilterButtons();
     renderRoutes();
     initDistanceCalculator();
     renderReviews();
